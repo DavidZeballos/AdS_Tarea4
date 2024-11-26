@@ -41,6 +41,10 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+// Configuración del puerto dinámico
+var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
+app.Urls.Add($"http://*:{port}");
+
 // Seeding de datos
 using (var scope = app.Services.CreateScope())
 {

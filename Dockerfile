@@ -17,12 +17,8 @@ WORKDIR /app
 # Copia los archivos publicados desde la etapa anterior
 COPY --from=build /app/publish .
 
-# Expone los puertos en los que tu aplicación escucha
-EXPOSE 5000
-EXPOSE 5001
-
-# Configura las variables necesarias para .NET en contenedores
-ENV ASPNETCORE_URLS=http://+:5000
+# Exponer el puerto dinámico proporcionado por Render
+ENV ASPNETCORE_URLS=http://+:${PORT}
 ENV DOTNET_RUNNING_IN_CONTAINER=true
 ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=true
 
