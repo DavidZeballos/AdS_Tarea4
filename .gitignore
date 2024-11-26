@@ -1,0 +1,42 @@
+# Ignore build output directories
+bin/
+obj/
+out/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Logs
+*.log
+
+# IDE settings
+.vscode/
+.idea/
+*.code-workspace
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Dependency directories
+node_modules/
+
+# Environment settings
+.env
+.env.*
+.secrets.json
+
+# EF Core Migrations
+**/Migrations/
+
+# Publish output
+wwwroot/
+publish/
+
+# Runtime files
+*.db
+*.sqlite
