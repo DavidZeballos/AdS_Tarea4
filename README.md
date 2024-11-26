@@ -86,3 +86,66 @@ Incluye una colección de Postman en el directorio raíz del proyecto (`UserApi.
 - Contraseña: `AdminPassword123`
 - **Clave JWT:** Revisa y actualiza la clave en `appsettings.json` si es necesario.
 
+## Probar el Programa Desplegado
+
+El programa ya está desplegado en Render y puedes probarlo utilizando **Postman** o cualquier cliente HTTP. La URL base para los endpoints de la API es:
+```
+https://ads-tarea4.onrender.com
+```
+
+### Endpoints Disponibles
+
+1. **Autenticación:**
+   - **Endpoint:** `POST /api/auth/login`
+   - **Descripción:** Genera un token JWT para autenticarse.
+   - **Cuerpo de Ejemplo (JSON):**
+     ```json
+     {
+       "email": "admin@example.com",
+       "password": "AdminPassword123"
+     }
+     ```
+   - **Encabezado de Respuesta:**
+     - `Authorization: Bearer <TOKEN>`
+   - Guarda este token para usarlo en los endpoints protegidos.
+
+2. **CRUD de Usuarios:**
+   - **Crear Usuario:**
+     - **Endpoint:** `POST /api/users`
+     - **Cuerpo de Ejemplo (JSON):**
+       ```json
+       {
+         "firstName": "John",
+         "lastName": "Doe",
+         "email": "john.doe@example.com",
+         "password": "password123"
+       }
+       ```
+   - **Obtener Usuarios Paginados:**
+     - **Endpoint:** `GET /api/users?page=1&limit=10`
+   - **Obtener Usuario por ID:**
+     - **Endpoint:** `GET /api/users/{id}`
+   - **Actualizar Usuario:**
+     - **Endpoint:** `PATCH /api/users/{id}`
+     - **Cuerpo de Ejemplo (JSON):**
+       ```json
+       {
+         "firstName": "Jane",
+         "lastName": "Smith"
+       }
+       ```
+   - **Eliminar Usuario (Lógica):**
+     - **Endpoint:** `DELETE /api/users/{id}`
+
+### Probar Autenticación y Seguridad
+
+1. **Autentícate con el endpoint `POST /api/auth/login`** usando las credenciales:
+   - **Email:** `admin@example.com`
+   - **Contraseña:** `AdminPassword123`
+
+2. **Incluye el Token JWT en las Solicitudes Protegidas:**
+   - Después de autenticarse, usa el token recibido en el encabezado de las solicitudes a los endpoints protegidos:
+     ```
+     Authorization: Bearer <TOKEN>
+     ```
+
